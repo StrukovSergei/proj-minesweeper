@@ -1,0 +1,34 @@
+body {
+    background-color: black;
+    text-align: center;
+}
+
+h1 {
+    color: bisque;
+}
+
+.board {
+    width: 400px;
+    margin: 60px auto;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.cell {
+    width: 35px;
+    height: 50px;
+    border-radius: 7px;
+    background-color: aqua;
+    color: red;
+}
+
+footer {
+    text-align: left;
+    padding: 3px;
+    color: DarkSalmon;
+  }
