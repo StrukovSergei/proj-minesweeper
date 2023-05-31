@@ -5,9 +5,15 @@ body {
 
 h1 {
     color: bisque;
+    font-weight: bold;
+    font-size: 48px;
 }
 
-#restartButton{
+h2 {
+    color: #4cb2f7;
+}
+
+#restartButton {
     cursor: pointer;
     font-size: 40px;
     background: none;
@@ -17,15 +23,16 @@ h1 {
 h3 {
     color: green;
 }
+
 .board {
-    width: 400px;
-    margin: 60px auto;
+    width: auto;
+    margin: 10px auto;
     background-color: aliceblue;
     border: 15px;
     border-style: groove;
     border-color: red;
     border-radius: 10px;
-    
+
 }
 
 table {
@@ -40,17 +47,20 @@ table {
     border-radius: 7px;
     background-color: rgb(7, 30, 73);
     color: red;
-    font-weight:bold ;
+    font-weight: bold;
     font-size: 28px;
     cursor: pointer;
 }
 
 .cell-revealed {
     background-color: lightgray;
-  }
+}
 
 footer {
     text-align: left;
-    padding: 3px;
     color: DarkSalmon;
-  }
+}
+
+span {
+    color: azure;
+}

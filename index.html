@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Minesweeper</title>
     <link rel="stylesheet" href="css/main.css">
+    <audio id="winSound" src="sound/win.mp3"></audio>
+    <audio id="loseSound" src="sound/lose.wav"></audio>
 </head>
 
 <body onload="onInit()">
@@ -15,13 +17,17 @@
     </footer>
 
     <h1>Minesweeper</h1>
+    <h2>Choose Difficulty</h2>
+    <button id="easyButton" onclick="chooseDifficulty('easy')">Easy</button>
+    <button id="mediumButton" onclick="chooseDifficulty('medium')">Medium</button>
+    <button id="hardButton" onclick="chooseDifficulty('hard')">Hard</button>
+    <table class="board">
     <h3>LIVES LEFT: </h3>
     <button onclick="onInit()" id="restartButton">😸</button>
-    <table class="board">
         <tbody class="game-board"></tbody>
     </table>
 
-
+    <div>Timer: <span id="timer">0</span></div>
 
     <script src="js/main.js"></script>
     <script src="js/util.js"></script>
