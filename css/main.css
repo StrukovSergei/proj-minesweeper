@@ -7,11 +7,25 @@ h1 {
     color: bisque;
 }
 
+#restartButton{
+    cursor: pointer;
+    font-size: 40px;
+    background: none;
+    border: 0;
+}
+
+h3 {
+    color: green;
+}
 .board {
     width: 400px;
     margin: 60px auto;
-    border-radius: 10px;
     background-color: aliceblue;
+    border: 15px;
+    border-style: groove;
+    border-color: red;
+    border-radius: 10px;
+    
 }
 
 table {
@@ -20,12 +34,20 @@ table {
 }
 
 .cell {
-    width: 35px;
-    height: 50px;
+    text-align: center;
+    width: 40px;
+    height: 65px;
     border-radius: 7px;
-    background-color: aqua;
+    background-color: rgb(7, 30, 73);
     color: red;
+    font-weight:bold ;
+    font-size: 28px;
+    cursor: pointer;
 }
+
+.cell-revealed {
+    background-color: lightgray;
+  }
 
 footer {
     text-align: left;
