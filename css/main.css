@@ -13,6 +13,10 @@ h2 {
     color: #4cb2f7;
 }
 
+h3 {
+    color: green;
+}
+
 #restartButton {
     cursor: pointer;
     font-size: 40px;
@@ -20,8 +24,26 @@ h2 {
     border: 0;
 }
 
-h3 {
-    color: green;
+#hintButton {
+    cursor: pointer;
+    font-size: 40px;
+    background: none;
+    border: 0;
+    position:absolute;
+
+}
+
+#diffButton{
+    cursor: pointer;
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    transition: 555ms;
+}
+
+#diffButton:hover{
+    background-color: gold;
+
 }
 
 .board {
@@ -37,13 +59,12 @@ h3 {
 
 table {
     border-collapse: separate;
-    border-spacing: 10px;
 }
 
 .cell {
     text-align: center;
     width: 40px;
-    height: 65px;
+    height: 45px;
     border-radius: 7px;
     background-color: rgb(7, 30, 73);
     color: red;

@@ -18,12 +18,13 @@
 
     <h1>Minesweeper</h1>
     <h2>Choose Difficulty</h2>
-    <button id="easyButton" onclick="chooseDifficulty('easy')">Easy</button>
-    <button id="mediumButton" onclick="chooseDifficulty('medium')">Medium</button>
-    <button id="hardButton" onclick="chooseDifficulty('hard')">Hard</button>
+    <button id="diffButton" onclick="chooseDifficulty('easy')">Easy</button>
+    <button id="diffButton" onclick="chooseDifficulty('medium')">Medium</button>
+    <button id="diffButton" onclick="chooseDifficulty('hard')">Hard</button>
     <table class="board">
     <h3>LIVES LEFT: </h3>
-    <button onclick="onInit()" id="restartButton">😸</button>
+    <button title="Restart" onclick="onInit()" id="restartButton">😸</button>
+    <button title="Hint!" onclick="giveHint()" id="hintButton">❔</button>
         <tbody class="game-board"></tbody>
     </table>
 

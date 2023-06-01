@@ -3,10 +3,12 @@
 var gBoard
 var isFirstClick
 var gLives
+var gHint
 
 var gLevel = {
     SIZE: 4,
-    MINES: 2
+    MINES: 2,
+    HINTS: 3
 }
 
 var gGame = {
@@ -23,8 +25,10 @@ const FLAG = '🚩'
 
 function onInit() {
     gGame.shownCount = 0
+    gLevel.HINTS = 3
     gGame.isOn = true
     isFirstClick = true
+    gHint = false
     gBoard = buildBoard()
     setMinesNegsCount(gBoard)
     renderBoard()
@@ -69,10 +73,11 @@ function renderBoard() {
         }
         strHTML += `</tr>\n`
     }
-    updateLifes()
+    updateHeader()
     const elCells = document.querySelector('.game-board')
     elCells.innerHTML = strHTML
     document.querySelector('#restartButton').innerText = '😸'
+    document.querySelector('#hintButton').innerText = '❔'
 }
 
 function minesNegsCount(board, rowIdx, colIdx) {
@@ -142,6 +147,11 @@ function onCellClicked(elCell, i, j) {
         console.log('mines around:', cell.minesAroundCount)
         console.log(cell.isMarked)
         console.log(cell.isShown)
+        if (gHint) {
+            updateHeader()
+            openNeighbors(i, j)
+            setTimeout(closeNeightbors, 1000, i, j)
+        }
         if (cell.isMarked || cell.isShown) {
             return
         }
@@ -149,7 +159,7 @@ function onCellClicked(elCell, i, j) {
         if (cell.isMine) {
             elText.textContent = MINE
             gLives--
-            updateLifes()
+            updateHeader()
 
             if (gLives === 0) gameOver()
             if (cell.isMarked || cell.isShown) {
@@ -184,12 +194,13 @@ function addMine(board, posI, posJ) {
     gBoard[posI][posJ].isMine = true
 }
 
-function updateLifes() {
-    document.querySelector('h3').innerText = `Lives Left: ${gLives}`
+function updateHeader() {
+    document.querySelector('h3').innerText = `Lives: ${gLives} Hints: ${gLevel.HINTS}`
 }
 
 function gameOver() {
     document.querySelector('#restartButton').innerText = '☠️'
+    openMines()
     gGame.isOn = false
     stopTimer()
     document.querySelector('#loseSound').play()
@@ -205,10 +216,7 @@ function victory() {
 function onCellMarked(elCell, i, j) {
     const elText = document.querySelector(`#cell-${i}-${j}`)
     if (gBoard[i][j].isMarked) {
-        elText.textContent = ''
-        gGame.markedCount--
-        gBoard[i][j].isMarked = false
-        cancelRightClick()
+        unmark(i, j)
     }
     if (gBoard[i][j].isShown) {
         cancelRightClick()
@@ -256,6 +264,7 @@ function openNeighbors(row, col) {
 }
 
 function chooseDifficulty(opt) {
+    stopTimer()
     if (opt === 'easy') {
         gLevel.SIZE = 4
         gLevel.MINES = 2
@@ -295,3 +304,50 @@ function checkVictory() {
     return count
 }
 
+function unmark(posI, posJ) {
+    const elText = document.querySelector(`#cell-${posI}-${posJ}`)
+    elText.textContent = ''
+    gGame.markedCount--
+    gBoard[posI][posJ].isMarked = false
+
+}
+
+function openMines() {
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            var cell = gBoard[i][j]
+            if (cell.isMine) {
+                const elText = document.querySelector(`#cell-${i}-${j}`)
+                elText.textContent = MINE
+            }
+        }
+    }
+}
+
+function giveHint() {
+    if(gLevel.HINTS === 0) return
+    gHint = true
+    gLevel.HINTS--
+    document.querySelector('#hintButton').innerText = '❓'
+    console.log(gLevel.HINTS)
+}
+
+function closeNeightbors(row, col) {
+    document.querySelector('#hintButton').innerText = '❔'
+    for (var i = row - 1; i <= row + 1; i++) {
+        if (i < 0 || i >= gBoard.length) continue
+        for (var j = col - 1; j <= col + 1; j++) {
+            if (j < 0 || j >= gBoard[0].length) continue
+            var neighborCell = gBoard[i][j]
+                gGame.shownCount--
+                neighborCell.isShown = false
+                const elText = document.querySelector(`#cell-${i}-${j}`)
+                elText.classList.remove('cell-revealed')
+                elText.textContent = ''
+                gHint = false
+                if(gLevel.HINTS === 0){
+                    document.querySelector('#hintButton').innerText = '❕'
+                }
+            }
+        }
+    }
