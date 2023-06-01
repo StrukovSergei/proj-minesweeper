@@ -14,34 +14,63 @@ h2 {
 }
 
 h3 {
-    color: green;
+    align-items: center;
+}
+
+#safeClicks {
+    margin-left: -28px;
+    color:gray
+}
+
+#lives {
+    color: palevioletred;
+    font-size: 25px;
+    margin: 20px;
+    font-weight: bolder;
+}
+
+#hints {
+    color:chocolate;
+
 }
 
 #restartButton {
     cursor: pointer;
-    font-size: 40px;
+    font-size: 50px;
     background: none;
     border: 0;
+
 }
 
 #hintButton {
     cursor: pointer;
-    font-size: 40px;
+    font-size: 30px;
     background: none;
     border: 0;
-    position:absolute;
 
 }
 
-#diffButton{
+#safeButton {
+    cursor: pointer;
+    font-size: 30px;
+    background: none;
+    border: 0;
+
+
+}
+
+#diffButton {
     cursor: pointer;
     width: 200px;
     height: 35px;
     border-radius: 10px;
     transition: 555ms;
+    font-size: larger;
+    color: rgb(7, 30, 73);
+    font-weight: bolder;
 }
 
-#diffButton:hover{
+#diffButton:hover {
     background-color: gold;
 
 }
@@ -71,6 +100,11 @@ table {
     font-weight: bold;
     font-size: 28px;
     cursor: pointer;
+}
+
+.cell:hover{
+    transition: 200ms;
+    background-color: rgb(7, 30, 140);
 }
 
 .cell-revealed {

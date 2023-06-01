@@ -25,3 +25,4 @@ function updateTimer() {
 function stopTimer() {
     clearInterval(timerInterval)
 }
+

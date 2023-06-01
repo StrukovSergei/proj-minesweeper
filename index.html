@@ -22,13 +22,19 @@
     <button id="diffButton" onclick="chooseDifficulty('medium')">Medium</button>
     <button id="diffButton" onclick="chooseDifficulty('hard')">Hard</button>
     <table class="board">
-    <h3>LIVES LEFT: </h3>
-    <button title="Restart" onclick="onInit()" id="restartButton">😸</button>
-    <button title="Hint!" onclick="giveHint()" id="hintButton">❔</button>
+        <h3>
+            <span id="safeClicks">Safe Clicks: </span>
+            <span id="lives">Lives: </span>
+            <span id="hints">Hints: </span>
+        </h3>
+        <button title="Safe Click" onclick="openSafeCell()" id="safeButton">🔒</button>
+        <button title="Restart" onclick="onInit()" id="restartButton">😸</button>
+        <button title="Hint!" onclick="giveHint()" id="hintButton">❔</button>
         <tbody class="game-board"></tbody>
     </table>
 
     <div>Timer: <span id="timer">0</span></div>
+    <div><span id="score"></span></div>
 
     <script src="js/main.js"></script>
     <script src="js/util.js"></script>
